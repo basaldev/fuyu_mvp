@@ -5,5 +5,8 @@
   (assoc word-v index "　"))
 
 (defn main [word missing]
-  [:div {:class "container"} 
-    (map letter/main (remove-letter (vec word) missing))])
+  (let [words (vec word)]
+    [:div {:class "container"} 
+      [:div {:class "row"}
+        (map letter/main (remove-letter words missing))]
+      [:div {:class "row"} (get words missing)]]))
