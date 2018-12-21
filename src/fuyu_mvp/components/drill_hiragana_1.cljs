@@ -1,5 +1,6 @@
 (ns fuyu_mvp.components.drill-hiragana-1
-  (:require [fuyu_mvp.components.letter :as letter]))
+  (:require [fuyu_mvp.components.letter :as letter]
+            [fuyu_mvp.components.missing-pool :as pool]))
 
 (defn remove-letter [word-v index]
   (assoc word-v index "　"))
@@ -9,4 +10,4 @@
     [:div {:class "container"} 
       [:div {:class "row"}
         (map letter/main (remove-letter words missing))]
-      [:div {:class "row"} (get words missing)]]))
+       [pool/main [(get words missing)]]]))
