@@ -9,4 +9,6 @@
 (defn main [missing-letters]
   [:div {:class "row"}
     (map (fn [letter]
-          [:span {:draggable true :on-drag-start drag-start} letter]) missing-letters)])
+          [:span {:draggable true
+                  :on-drag-start drag-start
+                  :key letter} letter]) missing-letters)])

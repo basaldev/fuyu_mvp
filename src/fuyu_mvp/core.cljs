@@ -6,7 +6,7 @@
 (enable-console-print!)
 
 (defn render []
-  (r/render [app/main] (dom/getElement  "app")))
+  (r/render [app/main] (dom/getElement "app")))
 
 (render)
 (defn on-js-reload [] (render))

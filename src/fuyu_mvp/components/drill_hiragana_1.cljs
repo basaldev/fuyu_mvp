@@ -10,4 +10,4 @@
     [:div {:class "container"} 
       [:div {:class "row"}
         (map letter/main (remove-letter words missing))]
-       [pool/main [(get words missing)]]]))
+        [pool/main [(get words missing)]]]))
