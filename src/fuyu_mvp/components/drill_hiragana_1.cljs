@@ -5,9 +5,11 @@
 (defn remove-letter [word-v index]
   (assoc word-v index "　"))
 
+(defn columns [words] (quot 12 (count words)))
+
 (defn main [word missing]
-  (let [words (vec word)]
+  (let [words (vec word) cols (columns words)]
     [:div {:class "container"} 
       [:div {:class "row"}
-        (map letter/main (remove-letter words missing))]
+        (map (fn [word] (letter/main word cols)) (remove-letter words missing))]
         [pool/main [(get words missing)]]]))
