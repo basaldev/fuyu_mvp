@@ -1,6 +1,37 @@
 /* some style */
 /* COLORS
 */
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+@keyframes shake {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+
 :root {
   --light-cyan: #CBF3F0;
   --cyan: #2EC4B6;
@@ -19,9 +50,18 @@ body {
 #root, #app {
   height: 100vh;
   width: 100vw;
+  user-select: none;
 }
 .win {
   background-image: url('/assets/win.gif');
+}
+.viewport {
+  width: 80vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 .form-item {
   padding: 10px;
@@ -38,6 +78,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition-property: all;
+  transition-duration: 200ms;
+}
+.win .form-item {
+  animation-name: bounce;
+  animation-duration: 1s;
+  transform-origin: center bottom;
+}
+.lose .form-item {
+  animation-name: shake;
+  animation-duration: 1s;
+  transform-origin: center bottom;
 }
 .open {
   background: #fff;
@@ -49,15 +101,6 @@ body {
   position: absolute;
   top: 0px;
   left: 0px;
-}
-.container {
-    width: 80vw;
-    left: 0;
-    right: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 .face {
   display:flex;
@@ -103,6 +146,9 @@ body {
   border: 3px solid;
   border-radius: 16px;
   text-align:center;
+  transition-property: all;
+  transition-duration: 200ms;
+  cursor: pointer;
 }
 .pool-item .smile {
   height: 20px;
@@ -122,6 +168,7 @@ body {
 
 .is-hover {
   background: yellow;
+  transform: scale(1.2);
 }
 
 .is-dropped {
@@ -129,5 +176,6 @@ body {
 }
 
 .is-dragging {
-  color: red;
+  opacity: 0.1;
+  background: black;
 }
