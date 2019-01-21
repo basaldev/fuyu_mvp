@@ -83,7 +83,13 @@ body {
   /* height: 10px; */
 }
 .is-over {
+}
+.is-target {
+  background: red;
+}
 
+.is-hover {
+  background: yellow;
 }
 
 .is-dropped {
@@ -91,5 +97,5 @@ body {
 }
 
 .is-dragging {
-
+  color: red;
 }

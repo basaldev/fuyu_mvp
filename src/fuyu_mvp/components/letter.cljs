@@ -1,33 +1,31 @@
 (ns fuyu_mvp.components.letter
-  (:require [goog.object :as object]
-            [fuyu_mvp.components.face :as face]))
+  (:require [clojure.string :as string] [fuyu_mvp.components.face :as face] [goog.object :as object]))
 
 (defn handle-drag-over [ev]
-  (println "drag-over")
   (.preventDefault ev))
 
 (defn handle-drag-enter [ev callback]
   (println "drag-enter")
-  (println (object/get ev "target")))
+  (callback))
 
 (defn handle-drag-leave [ev callback]
   (println "drag-leave")
-  (println (object/get ev "target")))
-
-(defn handle-drag-end [ev]
-  (println "drag-end"))
+  (callback))
 
 (defn handle-drop [ev selection callback]
-  (println "drop")
-  (println (object/get ev "target")))
+  (println "drop" selection)
+  (callback selection))
 
-  (defn main [letter column decide-word]
+(defn get-classes [target? hovering? letter]
+  (string/join " " ["form-item" (if (string/blank? letter) "open" "") (if target? "is-target" "") (and target? (if hovering? "is-hover" "")) ]))
+
+  (defn main [letter column target? hovering? decide-word enter-form leave-form]
+  (println )
     [:div { :class (str "col-sm-" column) :key letter }
-      [:div { :class (str "form-item" (if (clojure.string/blank? letter) " open" ""))
-              :on-drag-enter handle-drag-enter
+      [:div { :class (get-classes target? hovering? letter)
               :on-drag-over handle-drag-over
-              :on-drag-leave handle-drag-leave
-              :on-drag-end handle-drag-end
+              :on-drag-enter (fn [ev] (handle-drag-enter ev enter-form))
+              :on-drag-leave (fn [ev] (handle-drag-leave ev leave-form))
               :on-drop (fn [ev] (handle-drop ev letter decide-word))}
                 [:span {} letter]  [face/main "frown"]
                 ]])

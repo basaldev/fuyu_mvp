@@ -7,12 +7,14 @@
 
 (defn columns [words] (quot 12 (count words)))
 
-(defn randomize [answer others]
-  (shuffle (conj (vec others) answer)))
+(defn is-target? [selecting? word]
+  (and selecting? (= word "　")))
 
-(defn main [question missing options selecting? correct? select-word cancel-word decide-word]
-  (let [words (vec question) cols (columns words) choices (randomize (words missing) options)]
+(defn main [question missing options selection selecting? hovering? answered? correct? select-word cancel-word decide-word enter-form leave-form]
+  (let [cols (columns question)]
     [:div {:class "container"}
       [:div {:class "row"}
-        (map (fn [word] (letter/main word cols decide-word)) (remove-letter words missing))]
-        [pool/main choices select-word]]))
+        (map (fn [word]
+          (let [target? (is-target? selecting? word)] (letter/main word cols target? hovering? decide-word enter-form leave-form)))
+          (remove-letter question missing))]
+      [pool/main options selection select-word cancel-word]]))
