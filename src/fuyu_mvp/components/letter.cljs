@@ -21,10 +21,12 @@
 
   (defn main [letter column target? hovering? decide-word enter-form leave-form]
     [:div { :class (str "col-sm-" column) :key letter }
-      [:div { :class (get-classes target? hovering? letter)
-              :on-drag-over handle-drag-over
-              :on-drag-enter (fn [ev] (handle-drag-enter ev enter-form))
-              :on-drag-leave (fn [ev] (handle-drag-leave ev leave-form))
-              :on-drop (fn [ev] (handle-drop ev decide-word))}
-                [:span {} letter]  [face/main "frown"]
+      [:div { :class (get-classes target? hovering? letter) }
+       [:div {:class "drag-bucket"
+        :on-drag-over handle-drag-over
+        :on-drag-enter (fn [ev] (handle-drag-enter ev enter-form))
+        :on-drag-leave (fn [ev] (handle-drag-leave ev leave-form))
+        :on-drop (fn [ev] (handle-drop ev decide-word))
+     }]
+                [:span {} letter]  (if (string/blank? letter) "" [face/main "sad"] )
                 ]])

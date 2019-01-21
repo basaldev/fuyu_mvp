@@ -8,10 +8,20 @@
   --orange: #FF9F1C;
   --grey: #C9C9C9;
 }
+.row {
+  padding: 16px;
+}
 body {
   font-weight:bold;
   background: #fff;
   font-weight: bold;
+}
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+.win {
+  background-image: url('/assets/win.gif');
 }
 .form-item {
   padding: 10px;
@@ -20,10 +30,25 @@ body {
   color: var(--light-cyan);
   font-size: 30px;
   border-radius: 16px;
-  min-height: 100px;
+  min-height: 200px;
   font-size: 60px;
   line-height: 100px;
   background:  var(--cyan);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.open {
+  background: #fff;
+  border: 5px dashed #efefef;
+}
+.drag-bucket {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 .container {
     width: 80vw;
@@ -41,17 +66,25 @@ body {
   align-items: center;
   justify-content: center;
 }
-.meh,
-.smile,
-.frown {
-  width: 50%;
+.normal,
+.happy,
+.sad {
+  width: 100%;
   height: 25px;
-  border: solid 6px #000;
-  border-color: #000 transparent transparent transparent;
-  border-radius: 100%/200% 200% 0 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.smile { transform: rotate(180deg) }
-.meh { border-radius: 0px 0px 0px; height: 10px; margin-top: 5px;}
+.sad {
+  background-image:url('/assets/sad.svg');
+  margin-bottom: 8px;
+}
+.happy {
+  background-image:url('/assets/happy.svg');
+}
+.normal {
+  background-image:url('/assets/normal.svg');
+}
 
 .eye {
   width: 15px;
@@ -63,8 +96,6 @@ body {
 }
 
 .pool-item {
-  float:left;
-  width: 150px;
   height: 150px;
   color: var(--light-orange);
   background: var(--orange);
@@ -78,12 +109,7 @@ body {
   border: solid 5px #000;
   border-color: #000 transparent transparent transparent;
 }
-.pool-item .meh-face .eye  {
-  /* width: 13px; */
-  /* height: 10px; */
-}
-.is-over {
-}
+
 .is-target {
   background: red;
 }
