@@ -1,7 +1,8 @@
 (ns fuyu_mvp.components.missing-pool
   (:require [clojure.string :as string]
             [goog.style :as style]
-            [goog.object :as object]))
+            [goog.object :as object]
+             [fuyu_mvp.components.face :as face] ))
 
 (defn handle-drag-start [ev selection callback]
   (println "drag-start" selection)
@@ -22,4 +23,4 @@
                   :on-drag-start (fn [ev] (handle-drag-start ev letter select-word))
                   :on-drag-end (fn [ev] (handle-drag-start ev letter unselect-word))
                   :key letter}
-                  [:div {} letter]]) letters)])
+                  [:span {} letter] [face/main "meh"]]) letters)])
