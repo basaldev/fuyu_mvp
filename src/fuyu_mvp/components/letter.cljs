@@ -1,5 +1,6 @@
 (ns fuyu_mvp.components.letter
-  (:require [goog.object :as object]))
+  (:require [goog.object :as object]
+            [fuyu_mvp.components.face :as face]))
 
 (defn handle-drag-over [ev]
   (println "drag-over")
@@ -20,14 +21,13 @@
   (println "drop")
   (println (object/get ev "target")))
 
-(let [style {"border" "1px solid"}]
   (defn main [letter column decide-word]
     [:div { :class (str "col-sm-" column) :key letter }
-      [:div { :class "form-item"
-              :style style
+      [:div { :class (str "form-item" (if (clojure.string/blank? letter) " open" ""))
               :on-drag-enter handle-drag-enter
               :on-drag-over handle-drag-over
               :on-drag-leave handle-drag-leave
               :on-drag-end handle-drag-end
               :on-drop (fn [ev] (handle-drop ev letter decide-word))}
-                [:span {} letter]]]))
+                [:span {} letter]  [face/main "frown"]
+                ]])
