@@ -59,17 +59,25 @@ body {
   align-items: center;
   justify-content: center;
 }
-.meh,
-.smile,
-.frown {
-  width: 50%;
+.normal,
+.happy,
+.sad {
+  width: 100%;
   height: 25px;
-  border: solid 6px #000;
-  border-color: #000 transparent transparent transparent;
-  border-radius: 100%/200% 200% 0 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.smile { transform: rotate(180deg) }
-.meh { border-radius: 0px 0px 0px; height: 10px; margin-top: 5px;}
+.sad {
+  background-image:url('/assets/sad.svg');
+  margin-bottom: 8px;
+}
+.happy {
+  background-image:url('/assets/happy.svg');
+}
+.normal {
+  background-image:url('/assets/normal.svg');
+}
 
 .eye {
   width: 15px;

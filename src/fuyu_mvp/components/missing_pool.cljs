@@ -13,7 +13,7 @@
   (callback selection))
 
 (defn get-classes [letter selection]
-  (string/join " " ["pool-item col-sm-2" (if (= letter selection) "is-dragging" "")]))
+  (string/join " " ["pool-item col-sm-3 col-xs-6 col-md-2" (if (= letter selection) "is-dragging" "")]))
 
 (defn main [letters selection select-word cancel-word]
   [:div {:class "row"}
@@ -23,4 +23,4 @@
                   :on-drag-start (fn [ev] (handle-drag-start ev letter select-word))
                   :on-drag-end (fn [ev] (handle-drag-start ev letter cancel-word))
                   :key letter}
-                  [:span {} letter] [face/main "meh"]]) letters)])
+                  [:span {} letter] [face/main "normal"]]) letters)])

@@ -28,5 +28,5 @@
       :on-drag-leave (fn [ev] (handle-drag-leave ev leave-form))
       :on-drop (fn [ev] (handle-drop ev letter decide-word))
      }]
-                [:span {} letter]  (if (string/blank? letter) "" [face/main "frown"] )
+                [:span {} letter]  (if (string/blank? letter) "" [face/main "sad"] )
                 ]])
