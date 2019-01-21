@@ -16,6 +16,13 @@ body {
   background: #fff;
   font-weight: bold;
 }
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+.win {
+  background-image: url('/assets/win.gif');
+}
 .form-item {
   padding: 10px;
   text-align: center;
