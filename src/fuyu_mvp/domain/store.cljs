@@ -43,4 +43,4 @@
   ((vec (get-question)) (get-missing)))
 
 (defn get-result []
-  (= (get-answer) (get-selection))))
+  (= (get-answer) (get-selection)))

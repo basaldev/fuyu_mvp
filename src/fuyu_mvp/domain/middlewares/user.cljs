@@ -4,6 +4,8 @@
 (defn select-word [selection]
   (println "fired:" "select-word")
   (store/swap :selecting? true)
+  (store/swap :answered? false)
+  (store/swap :correct? false)
   (store/swap :selection selection))
 
 (defn unselect-word []
@@ -12,7 +14,8 @@
 
 (defn decide-word []
   (println "fired:" "decide-word")
-  (store/swap :answered? true))
+  (store/swap :answered? true)
+  (store/swap :correct? (store/get-result)))
 
 (defn enter-form []
   (println "fired:" "enter-form")

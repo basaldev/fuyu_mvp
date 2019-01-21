@@ -12,13 +12,13 @@
   (println "drag-end" selection)
   (callback selection))
 
-(defn get-classes [letter selection]
-  (string/join " " ["pool-item" (if (= letter selection) "is-dragging" "")]))
+(defn get-classes [letter selection selecting?]
+  (string/join " " ["pool-item" (if (and selecting? (= letter selection)) "is-dragging" "")]))
 
-(defn main [letters selection select-word unselect-word]
+(defn main [letters selection selecting? select-word unselect-word]
   [:div {:class "row"}
     (map (fn [letter]
-          [:div { :class (get-classes letter selection)
+          [:div { :class (get-classes letter selection selecting?)
                   :draggable true
                   :on-drag-start (fn [ev] (handle-drag-start ev letter select-word))
                   :on-drag-end (fn [ev] (handle-drag-start ev letter unselect-word))
