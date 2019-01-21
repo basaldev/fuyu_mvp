@@ -1,13 +1,13 @@
 (ns fuyu_mvp.components.message)
 
 (defn correct []
-  [:div "Congraturation!"])
+  [:div "すごい、せいかい！"])
 
 (defn wrong []
-  [:div "This is incorrect. Let's try again!"])
+  [:div "う〜ん、ちがうよ。"])
 
 (defn not-answered []
-  [:div "Let's choose letter"])
+  [:div "□に入るもじはどれかな？"])
 
 (defn main [answered? result]
   [:div { :class "message" }

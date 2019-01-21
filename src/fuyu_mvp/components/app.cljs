@@ -4,21 +4,24 @@
             [fuyu_mvp.components.message :as message]
             [fuyu_mvp.components.drill-hiragana-1 :as drill-1]))
 
+(defn get-classes []
+  (if (and (store/get-answered?) (store/get-result)) "win" ""))
+
 (defn main []
-  (let [state @store/state]
-    [:div
-      [drill-1/main
-        (store/get-question)
-        (store/get-missing)
-        (store/get-options)
-        (store/get-selection)
-        (store/get-selecting?)
-        (store/get-hovering?)
-        (store/get-answered?)
-        (store/get-correct?)
-        user/select-word
-        user/unselect-word
-        user/decide-word
-        user/enter-form
-        user/leave-form]
-      [message/main (store/get-answered?) (store/get-result)]]))
+  [:div { :id "app"
+          :class (get-classes) }
+    [drill-1/main
+      (store/get-question)
+      (store/get-missing)
+      (store/get-options)
+      (store/get-selection)
+      (store/get-selecting?)
+      (store/get-hovering?)
+      (store/get-answered?)
+      (store/get-correct?)
+      user/select-word
+      user/unselect-word
+      user/decide-word
+      user/enter-form
+      user/leave-form]
+    [message/main (store/get-answered?) (store/get-result)]])

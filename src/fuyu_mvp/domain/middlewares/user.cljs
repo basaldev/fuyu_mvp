@@ -4,13 +4,15 @@
 (defn select-word [selection]
   (println "fired:" "select-word")
   (store/swap :selecting? true)
+  (store/swap :hovering? false)
   (store/swap :answered? false)
   (store/swap :correct? false)
   (store/swap :selection selection))
 
 (defn unselect-word []
   (println "fired:" "unselect-word")
-  (store/swap :selecting? false))
+  (store/swap :selecting? false)
+  (store/swap :hovering? false))
 
 (defn decide-word []
   (println "fired:" "decide-word")

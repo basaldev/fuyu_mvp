@@ -7,7 +7,7 @@
 (enable-console-print!)
 
 (defn mount []
-  (r/render [app/main] (dom/getElement "app")))
+  (r/render [app/main] (dom/getElement "root")))
 
 (init/init-words)
 (mount)
