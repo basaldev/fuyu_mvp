@@ -2,13 +2,16 @@
   (:require [fuyu_mvp.domain.store :as store]))
 
 (defn select-word [selection]
-  (store/swap :selecting true)
-  (store/swap :answer selection))
+  (println "fired:" "select-word")
+  (store/swap :selecting? true)
+  (store/swap :selection selection))
 
 (defn cancel-word []
-  (store/swap :selecting false)
-  (store/swap :answer ""))
+  (println "fired:" "cancel-word")
+  (store/swap :selecting? false)
+  (store/swap :selection ""))
 
 (defn decide-word [selection]
-  (store/swap :selecting false)
-  (store/swap :answer selection))
+  (println "fired:" "decide-word")
+  (store/swap :selecting? false)
+  (store/swap :selection selection))
