@@ -14,13 +14,12 @@
 
 (defn handle-drop [ev callback]
   (println "drop")
-  (callback selection))
+  (callback))
 
 (defn get-classes [target? hovering? letter]
   (string/join " " ["form-item" (if (string/blank? letter) "open" "") (if target? "is-target" "") (and target? (if hovering? "is-hover" "")) ]))
 
   (defn main [letter column target? hovering? decide-word enter-form leave-form]
-  (println )
     [:div { :class (str "col-sm-" column) :key letter }
       [:div { :class (get-classes target? hovering? letter)
               :on-drag-over handle-drag-over

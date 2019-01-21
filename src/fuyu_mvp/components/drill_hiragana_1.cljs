@@ -16,5 +16,5 @@
       [:div {:class "row"}
         (map (fn [word]
           (let [target? (is-target? selecting? word)] (letter/main word cols target? hovering? decide-word enter-form leave-form)))
-          (remove-letter question missing))]
-      [pool/main options selection select-word unselect-word]]))
+          (if (and answered? correct?) question (remove-letter question missing)))]
+      [pool/main options selection selecting? select-word unselect-word]]))
