@@ -13,8 +13,8 @@
   (println "drag-leave")
   (callback))
 
-(defn handle-drop [ev selection callback]
-  (println "drop" selection)
+(defn handle-drop [ev callback]
+  (println "drop")
   (callback selection))
 
 (defn get-classes [target? hovering?]
@@ -28,5 +28,5 @@
               :on-drag-over handle-drag-over
               :on-drag-enter (fn [ev] (handle-drag-enter ev enter-form))
               :on-drag-leave (fn [ev] (handle-drag-leave ev leave-form))
-              :on-drop (fn [ev] (handle-drop ev letter decide-word))}
+              :on-drop (fn [ev] (handle-drop ev decide-word))}
                 [:div {} letter]]]))

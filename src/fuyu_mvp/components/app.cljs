@@ -6,16 +6,16 @@
 (defn main []
   (let [state @store/state]
     [drill-1/main
-      (state :question)
-      (state :missing)
-      (state :options)
-      (state :selection)
-      (state :selecting?)
-      (state :hovering?)
-      (state :answered?)
-      (state :correct?)
+      (store/get-question)
+      (store/get-missing)
+      (store/get-options)
+      (store/get-selection)
+      (store/get-selecting?)
+      (store/get-hovering?)
+      (store/get-answered?)
+      (store/get-correct?)
       user/select-word
-      user/cancel-word
+      user/unselect-word
       user/decide-word
       user/enter-form
       user/leave-form]))
