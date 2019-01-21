@@ -7,6 +7,8 @@
             :missing 2
             :selection ""
             :selecting? false
+            :hovering? false
+            :answered? false
             :correct? false}))
 
 (defn swap [key value]

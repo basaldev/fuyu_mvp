@@ -3,31 +3,30 @@
             [goog.object :as object]))
 
 (defn handle-drag-over [ev]
-  (println "drag-over")
   (.preventDefault ev))
 
 (defn handle-drag-enter [ev callback]
   (println "drag-enter")
-  (println (object/get ev "target")))
+  (callback))
 
 (defn handle-drag-leave [ev callback]
   (println "drag-leave")
-  (println (object/get ev "target")))
+  (callback))
 
 (defn handle-drop [ev selection callback]
-  (println "drop")
-  (println (object/get ev "target")))
+  (println "drop" selection)
+  (callback selection))
 
-(defn get-classes [target?]
-  (string/join " " ["form-item" (if target? "is-target" "")]))
+(defn get-classes [target? hovering?]
+  (string/join " " ["form-item" (if target? "is-target" "") (and target? (if hovering? "is-hover" ""))]))
 
 (let [style {"border" "1px solid"}]
-  (defn main [letter column target? decide-word]
+  (defn main [letter column target? hovering? decide-word enter-form leave-form]
     [:div { :class (str "col-sm-" column) :key letter }
-      [:div { :class (get-classes target?)
+      [:div { :class (get-classes target? hovering?)
               :style style
-              :on-drag-enter handle-drag-enter
               :on-drag-over handle-drag-over
-              :on-drag-leave handle-drag-leave
+              :on-drag-enter (fn [ev] (handle-drag-enter ev enter-form))
+              :on-drag-leave (fn [ev] (handle-drag-leave ev leave-form))
               :on-drop (fn [ev] (handle-drop ev letter decide-word))}
                 [:div {} letter]]]))

@@ -10,11 +10,11 @@
 (defn is-target? [selecting? word]
   (and selecting? (= word "　")))
 
-(defn main [question missing options selection selecting? correct? select-word cancel-word decide-word]
+(defn main [question missing options selection selecting? hovering? answered? correct? select-word cancel-word decide-word enter-form leave-form]
   (let [cols (columns question)]
     [:div {:class "container"}
       [:div {:class "row"}
         (map (fn [word]
-          (let [target? (is-target? selecting? word)] (letter/main word cols target? decide-word)))
+          (let [target? (is-target? selecting? word)] (letter/main word cols target? hovering? decide-word enter-form leave-form)))
           (remove-letter question missing))]
       [pool/main options selection select-word cancel-word]]))

@@ -22,6 +22,10 @@
   background: red;
 }
 
+.is-hover {
+  background: yellow;
+}
+
 .is-dropped {
   
 }

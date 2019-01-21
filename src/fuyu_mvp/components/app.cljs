@@ -11,7 +11,11 @@
       (state :options)
       (state :selection)
       (state :selecting?)
+      (state :hovering?)
+      (state :answered?)
       (state :correct?)
       user/select-word
       user/cancel-word
-      user/decide-word]))
+      user/decide-word
+      user/enter-form
+      user/leave-form]))

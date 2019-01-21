@@ -15,3 +15,11 @@
   (println "fired:" "decide-word")
   (store/swap :selecting? false)
   (store/swap :selection selection))
+
+(defn enter-form []
+  (println "fired:" "enter-form")
+  (store/swap :hovering? true))
+
+(defn leave-form []
+  (println "fired:" "leave-form")
+  (store/swap :hovering? false))
