@@ -3,7 +3,8 @@
             [fuyu_mvp.domain.middlewares.user :as user]
             [fuyu_mvp.components.pool :as pool]
             [fuyu_mvp.components.message :as message]
-            [fuyu_mvp.components.form :as form]))
+            [fuyu_mvp.components.form :as form]
+            [fuyu_mvp.components.play-again :as play-again]))
 
 (defn get-classes []
   (if (store/get-answered?)
@@ -43,4 +44,5 @@
           selecting?
           correct?
           user/select-word
-          user/unselect-word]]]))
+          user/unselect-word]
+        [play-again/main]]]))

@@ -1,5 +1,7 @@
 (ns fuyu_mvp.domain.middlewares.user
-  (:require [fuyu_mvp.domain.store :as store]))
+  (:require [fuyu_mvp.domain.store :as store]
+            [fuyu_mvp.domain.middlewares.init :as init]
+            [fuyu_mvp.domain.store :as store]))
 
 (defn select-word [selection]
   (println "fired:" "select-word")
@@ -25,3 +27,8 @@
 (defn leave-form []
   (println "fired:" "leave-form")
   (store/swap :hovering? false))
+
+(defn play-again []
+  (println "fired:" "play-again")
+  (reset! store/state store/default-state)
+  (init/init-words))
