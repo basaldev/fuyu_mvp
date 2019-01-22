@@ -1,15 +1,17 @@
 (ns fuyu_mvp.domain.store
   (:require [reagent.core :as r]))
 
+(def default-state {:question (vec "こうえん")
+                    :options (vec "あかさたな")
+                    :missing 2
+                    :selection ""
+                    :selecting? false
+                    :hovering? false
+                    :answered? false
+                    :correct? false})
+
 (def state
-  (r/atom { :question (vec "こうえん")
-            :options (vec "あかさたな")
-            :missing 2
-            :selection ""
-            :selecting? false
-            :hovering? false
-            :answered? false
-            :correct? false}))
+  (r/atom default-state))
 
 (defn swap [key value]
   (swap! state assoc key value)
