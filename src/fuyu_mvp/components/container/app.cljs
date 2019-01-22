@@ -45,4 +45,4 @@
           correct?
           user/select-word
           user/unselect-word]
-        [play-again/main]]]))
+        (if (and answered? correct?) [play-again/main] nil)]]))
