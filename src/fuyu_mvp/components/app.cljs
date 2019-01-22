@@ -37,4 +37,7 @@
           user/unselect-word
           user/decide-word
           user/enter-form
-          user/leave-form]]]))
+          user/leave-form]
+        [:button
+          {:on-click (fn [] (user/play-again))}
+          "Play Again"]]]))

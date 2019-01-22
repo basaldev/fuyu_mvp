@@ -25,3 +25,14 @@
 (defn leave-form []
   (println "fired:" "leave-form")
   (store/swap :hovering? false))
+
+(defn play-again []
+  (println "fired:" "play-again")
+  (store/swap :question (vec "こうえん"))
+  (store/swap :options (vec "あかさたな"))
+  (store/swap :missing 2)
+  (store/swap :selection "")
+  (store/swap :selecting? false)
+  (store/swap :hovering? false)
+  (store/swap :answered? false)
+  (store/swap :correct? false))
