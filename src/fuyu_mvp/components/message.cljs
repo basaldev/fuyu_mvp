@@ -7,10 +7,10 @@
   [:div "う〜ん、ちがうみたい。"])
 
 (defn not-answered []
-  [:div "□に入るもじはどれかな？"])
+  [:div "⬜️に入るもじはどれかな？"])
 
 (defn selecting []
-  [:div "そのまま□へ・・・"])
+  [:div "そのまま⬜️へ・・・"])
 
 (defn hovering []
   [:div "指をはなしてみよう！"])
