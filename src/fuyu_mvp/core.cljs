@@ -1,12 +1,13 @@
 (ns fuyu_mvp.core
     (:require [goog.dom :as dom]
               [reagent.core :as r]
+              [fuyu_mvp.domain.middlewares.init :as init]
               [fuyu_mvp.components.app :as app]))
 
 (enable-console-print!)
 
-(defn render []
-  (r/render [app/main] (dom/getElement  "app")))
+(defn mount []
+  (r/render [app/main] (dom/getElement "root")))
 
-(render)
-(defn on-js-reload [] (render))
+(init/init-words)
+(mount)
