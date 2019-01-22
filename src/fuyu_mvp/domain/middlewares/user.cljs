@@ -1,5 +1,7 @@
 (ns fuyu_mvp.domain.middlewares.user
-  (:require [fuyu_mvp.domain.store :as store]))
+  (:require [fuyu_mvp.domain.store :as store]
+            [fuyu_mvp.domain.middlewares.init :as init]
+            [fuyu_mvp.domain.store :as store]))
 
 (defn select-word [selection]
   (println "fired:" "select-word")
@@ -28,11 +30,5 @@
 
 (defn play-again []
   (println "fired:" "play-again")
-  (store/swap :question (vec "こうえん"))
-  (store/swap :options (vec "あかさたな"))
-  (store/swap :missing 2)
-  (store/swap :selection "")
-  (store/swap :selecting? false)
-  (store/swap :hovering? false)
-  (store/swap :answered? false)
-  (store/swap :correct? false))
+  (reset! store/state store/default-state)
+  (init/init-words))

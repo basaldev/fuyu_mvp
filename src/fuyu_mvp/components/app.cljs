@@ -2,7 +2,8 @@
   (:require [fuyu_mvp.domain.store :as store]
             [fuyu_mvp.domain.middlewares.user :as user]
             [fuyu_mvp.components.message :as message]
-            [fuyu_mvp.components.drill-hiragana-1 :as drill-1]))
+            [fuyu_mvp.components.drill-hiragana-1 :as drill-1]
+            [fuyu_mvp.components.play-again :as play-again]))
 
 (defn get-classes []
   (if (store/get-answered?)
@@ -38,6 +39,4 @@
           user/decide-word
           user/enter-form
           user/leave-form]
-        [:button
-          {:on-click (fn [] (user/play-again))}
-          "Play Again"]]]))
+        (play-again/main)]]))
