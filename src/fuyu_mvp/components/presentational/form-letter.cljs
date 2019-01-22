@@ -1,4 +1,4 @@
-(ns fuyu_mvp.components.letter
+(ns fuyu_mvp.components.form-letter
   (:require [clojure.string :as string]
             [goog.object :as object]
             [fuyu_mvp.components.face :as face]))
@@ -21,9 +21,13 @@
 (defn get-classes [target? hovering? letter]
   (string/join " " ["form-item" (if (string/blank? letter) "open" "") (if target? "is-target" "") (and target? (if hovering? "is-hover" "")) ]))
 
-(defn main [letter face column target? hovering? decide-word enter-form leave-form]
+(defn get-style [index]
+  { "animationDelay" (str (* 100 index) "ms") })
+
+(defn main [index letter face column target? hovering? decide-word enter-form leave-form]
   [:div { :class (str "col-sm-" column) :key letter }
-    [:div { :class (get-classes target? hovering? letter) }
+    [:div { :class (get-classes target? hovering? letter)
+            :style (get-style index)}
       [:div { :class "drag-bucket"
               :on-drag-over handle-drag-over
               :on-drag-enter (fn [ev] (handle-drag-enter ev enter-form))

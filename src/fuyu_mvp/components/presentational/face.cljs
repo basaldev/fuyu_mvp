@@ -2,5 +2,4 @@
   (:require [goog.object :as object]))
 
   (defn main [type]
-    [:div { :class (str type) }
-                ])
+    [:div { :class (str type) }])
